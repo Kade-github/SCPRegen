@@ -14,7 +14,7 @@ namespace SCPRegen
     name = "SCPRegen",
     description = "Allowing SCP's today to regen their health!",
     id = "kade.scpr",
-    version = "1.0",
+    version = "1.1",
     SmodMajor = 3,
     SmodMinor = 3,
     SmodRevision = 1
