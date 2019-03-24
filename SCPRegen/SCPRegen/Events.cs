@@ -15,7 +15,11 @@ namespace SCPRegen
         private readonly SCPRegen plugin;
 
         static bool isStarted = false;
-        public Events(SCPRegen plugin) => this.plugin = plugin;
+        public Events(SCPRegen plugin) { this.plugin = plugin; HP = plugin.GetConfigInt("scpr_regenerate_hp"); ATimer = plugin.GetConfigInt("scpr_regenerate_timer"); }
+
+        int HP { get; set; }
+
+        int ATimer { get; set; }
 
         public void OnWaitingForPlayers(WaitingForPlayersEvent ev)
         {
@@ -30,10 +34,10 @@ namespace SCPRegen
                     {
                         if (s.TeamRole.Team == Team.SCP)
                         {
-                            s.AddHealth(plugin.GetConfigInt("scpr_regenerate_hp"));
+                            s.AddHealth(HP);
                         }
                     }
-                    Thread.Sleep(plugin.GetConfigInt("scpr_regenerate_timer"));
+                    Thread.Sleep(ATimer);
                 }
             }).Start();
         }
